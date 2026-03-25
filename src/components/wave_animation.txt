@@ -1,0 +1,60 @@
+  useEffect(() => {
+    // Eagle-style wave text animation
+    const animateText = (element: HTMLElement | null, delay: number = 0) => {
+      if (!element) return;
+      
+      const text = element.innerText;
+      element.innerHTML = '';
+      
+      text.split('').forEach((char, index) => {
+        const span = document.createElement('span');
+        span.textContent = char;
+        span.style.opacity = '0';
+        span.style.transform = 'translateY(30px)';
+        span.style.transition = `all 0.6s ease ${delay + index * 0.05}s`;
+        span.style.display = 'inline-block';
+        element.appendChild(span);
+        
+        setTimeout(() => {
+          span.style.opacity = '1';
+          span.style.transform = 'translateY(0)';
+        }, 50 + delay * 1000);
+      });
+    };
+
+    // Generate random particles
+    const newParticles: Particle[] = [];
+    for (let i = 0; i < 20; i++) {
+      newParticles.push({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        size: Math.random() * 3 + 1,
+        duration: Math.random() * 10 + 10,
+      });
+    }
+    setParticles(newParticles);
+
+    // Start wave animations
+    setTimeout(() => {
+      animateText(mainTextRef.current, 0);
+    }, 300);
+
+    setTimeout(() => {
+      animateText(subTextRef.current, 0.8);
+    }, 800);
+
+    setTimeout(() => {
+      setTextAnimationComplete(true);
+    }, 2000);
+
+    // Show splash screen for 3.5 seconds then fade out
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+      setTimeout(() => {
+        onComplete();
+      }, 500); // Allow fade-out animation to complete
+    }, 3500);
+
+    return () => clearTimeout(timer);
+  }, [onComplete]);
