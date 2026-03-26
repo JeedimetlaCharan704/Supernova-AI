@@ -3,7 +3,7 @@ import { Zap, Mail, Phone, Instagram, Linkedin, Github, Twitter, ArrowUpRight, S
 
 const Footer: React.FC = () => {
   const socialLinks = [
-    { icon: Instagram, href: 'https://www.instagram.com/ironwings_ai?igsh=N3poemhwNm1lb3F1', label: 'Instagram', gradient: 'from-pink-500 via-purple-500 to-pink-500' },
+    { icon: Instagram, href: 'https://www.instagram.com/supernova_ai.agency?igsh=N3poemhwNm1lb3F1', label: 'Instagram', gradient: 'from-pink-500 via-purple-500 to-pink-500' },
     { icon: Linkedin, href: 'https://www.linkedin.com/in/jeedimetla-charan-089a83339', label: 'LinkedIn', gradient: 'from-blue-500 via-cyan-500 to-blue-500' },
     { icon: Github, href: 'https://github.com/JeedimetlaCharan704', label: 'GitHub', gradient: 'from-gray-600 via-gray-400 to-gray-600' },
     { icon: Twitter, href: '#', label: 'Twitter', gradient: 'from-sky-400 via-blue-500 to-sky-400' },
