@@ -58,7 +58,7 @@ const Navigation: React.FC = () => {
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              href="https://calendly.com/ironwingsai/30min"
+              href="https://calendly.com/supernova-ai-agency/30min"
               target="_blank"
               rel="noopener noreferrer"
               className="modern-button text-xs py-2 px-4"
@@ -124,7 +124,7 @@ const Navigation: React.FC = () => {
 
                 <div className="mt-auto pt-4">
                   <a
-                    href="https://calendly.com/ironwingsai/30min"
+                    href="https://calendly.com/supernova-ai-agency/30min"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="modern-button w-full justify-center text-center text-sm py-3"

@@ -63,7 +63,7 @@ const Hero: React.FC = () => {
           className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-5 mb-10 md:mb-16"
         >
           <a
-            href="https://calendly.com/ironwingsai/30min"
+            href="https://calendly.com/supernova-ai-agency/30min"
             target="_blank"
             rel="noopener noreferrer"
             className="modern-button text-xs sm:text-sm md:text-base px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4"

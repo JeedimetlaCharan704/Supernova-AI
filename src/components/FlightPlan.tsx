@@ -126,7 +126,7 @@ const FlightPlan: React.FC = () => {
           className="text-center mt-12 md:mt-16 lg:mt-20"
         >
           <a
-            href="https://calendly.com/ironwingsai/30min"
+            href="https://calendly.com/supernova-ai-agency/30min"
             target="_blank"
             rel="noopener noreferrer"
             className="modern-button group text-sm md:text-base px-8 py-3 md:py-4"

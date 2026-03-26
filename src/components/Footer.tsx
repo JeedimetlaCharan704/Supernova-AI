@@ -102,13 +102,13 @@ const Footer: React.FC = () => {
               <ul className="space-y-4">
                 <li>
                   <a 
-                    href="mailto:ironwingsai@gmail.com" 
+                    href="mailto:supernova.ai.agency@gmail.com" 
                     className="text-gray-400 hover:text-primary transition-colors text-sm md:text-base flex items-center gap-3 group"
                   >
                     <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                       <Mail className="w-4 h-4" />
                     </div>
-                    ironwingsai@gmail.com
+                    supernova.ai.agency@gmail.com
                   </a>
                 </li>
                 <li>
