@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Zap } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navigation: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,10 +16,17 @@ const Navigation: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = [
+  const isHomePage = location.pathname === '/';
+
+  const navItems = isHomePage ? [
     { name: 'Solutions', href: '#solutions' },
     { name: 'Success Stories', href: '#success-stories' },
     { name: 'How It Works', href: '#how-it-works' },
+  ] : [
+    { name: 'Voice Agents', href: '/voice-agents' },
+    { name: 'Chat Support', href: '/chat-support' },
+    { name: 'Lead Gen', href: '/lead-gen' },
+    { name: 'Workflow Magic', href: '/workflow-magic' },
   ];
 
   return (
@@ -34,26 +43,37 @@ const Navigation: React.FC = () => {
       >
         <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 flex items-center justify-between">
           {/* Logo - Smaller for mobile */}
-          <a href="#" className="flex items-center gap-2 group">
+          <Link to="/" className="flex items-center gap-2 group">
             <div className="w-8 h-8 bg-gradient-to-br from-primary via-neon-purple to-accent rounded-lg flex items-center justify-center transform transition-all duration-300 group-hover:scale-105 shadow-lg shadow-primary/30">
               <Zap className="w-4 h-4 text-white fill-current" />
             </div>
             <span className="text-base md:text-lg font-bold text-white tracking-wide">
               Supernova<span className="text-primary-light">.ai</span>
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-6">
             {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="relative text-sm font-medium text-gray-300 hover:text-white transition-all duration-300 group py-1"
-              >
-                {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 group-hover:w-full" />
-              </a>
+              item.href.startsWith('/') ? (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className="relative text-sm font-medium text-gray-300 hover:text-white transition-all duration-300 group py-1"
+                >
+                  {item.name}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 group-hover:w-full" />
+                </Link>
+              ) : (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="relative text-sm font-medium text-gray-300 hover:text-white transition-all duration-300 group py-1"
+                >
+                  {item.name}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 group-hover:w-full" />
+                </a>
+              )
             ))}
             <motion.a
               whileHover={{ scale: 1.05 }}
@@ -107,18 +127,26 @@ const Navigation: React.FC = () => {
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  {navItems.map((item, index) => (
-                    <motion.a
-                      key={item.name}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      href={item.href}
-                      className="text-base font-medium text-gray-300 hover:text-primary hover:bg-white/5 px-4 py-3 rounded-lg transition-all"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {item.name}
-                    </motion.a>
+                  {navItems.map((item) => (
+                    item.href.startsWith('/') ? (
+                      <Link
+                        key={item.name}
+                        to={item.href}
+                        className="text-base font-medium text-gray-300 hover:text-primary hover:bg-white/5 px-4 py-3 rounded-lg transition-all"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
+                    ) : (
+                      <a
+                        key={item.name}
+                        href={item.href}
+                        className="text-base font-medium text-gray-300 hover:text-primary hover:bg-white/5 px-4 py-3 rounded-lg transition-all"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {item.name}
+                      </a>
+                    )
                   ))}
                 </div>
 
