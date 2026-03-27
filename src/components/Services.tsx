@@ -67,8 +67,8 @@ const Services: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* 2x2 Grid - All cards same size */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+        {/* Single row - 4 columns on desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 lg:gap-6">
           {services.map((service, index) => (
             <Link to={service.link} key={index}>
               <motion.div
@@ -77,23 +77,23 @@ const Services: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 whileHover={{ y: -5 }}
-                className="glass-card p-6 md:p-8 group relative overflow-hidden card-glow cursor-pointer h-full"
+                className="glass-card p-5 md:p-6 lg:p-7 group relative overflow-hidden card-glow cursor-pointer h-full"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
 
                 <div className="relative z-10 h-full flex flex-col">
-                  <div className="flex items-center justify-between mb-4 md:mb-6">
-                    <div className={`w-12 h-12 md:w-14 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center group-hover:scale-105 transition-transform duration-300`}>
-                      <service.icon className="w-6 h-6 md:w-7 text-white" />
+                  <div className="flex items-center justify-between mb-3 lg:mb-4">
+                    <div className={`w-10 h-10 md:w-12 lg:w-12 rounded-xl lg:rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center group-hover:scale-105 transition-transform duration-300`}>
+                      <service.icon className="w-5 h-5 md:w-6 text-white" />
                     </div>
-                    <ArrowUpRight className="w-5 h-5 text-gray-500 group-hover:text-white transition-all duration-300" />
+                    <ArrowUpRight className="w-4 h-4 md:w-5 text-gray-500 group-hover:text-white transition-all duration-300" />
                   </div>
 
-                  <h3 className="text-lg md:text-xl font-bold text-white mb-2 md:mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300 transition-all duration-300">
+                  <h3 className="text-sm md:text-base lg:text-base font-bold text-white mb-1.5 lg:mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300 transition-all duration-300">
                     {service.title}
                   </h3>
 
-                  <p className="text-sm md:text-base text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300 flex-grow">
+                  <p className="text-xs md:text-sm text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300 flex-grow">
                     {service.description}
                   </p>
                 </div>
